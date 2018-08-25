@@ -1,0 +1,11 @@
+
+.main_body {
+    margin: auto;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    padding: 25px;
+    width: 800px;
+    height: 100%;
+    box-shadow: 0 0px 5px rgba(0,0,0,.9);
+    border-radius: 2px;
+}
