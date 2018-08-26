@@ -1,3 +1,20 @@
+.noselect {
+  -webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none; /* Safari */
+     -khtml-user-select: none; /* Konqueror HTML */
+       -moz-user-select: none; /* Firefox */
+        -ms-user-select: none; /* Internet Explorer/Edge */
+            user-select: none; /* Non-prefixed version, currently
+                                  supported by Chrome and Opera */
+}
+
+
+body {
+    background-color: #202020;
+    height: 100%;
+    color: #888;
+    font-family: sans-serif;
+}
 
 .main_body {
     margin: auto;
@@ -8,4 +25,135 @@
     height: 100%;
     box-shadow: 0 0px 5px rgba(0,0,0,.9);
     border-radius: 2px;
+}
+
+.dark-gray_bg {
+    background-color: #080808;
+}
+
+.gray_bg {
+    background-color: #181818;
+}
+
+#calc_title {
+    color: white;
+    font-size: 20px;
+    font-weight: bold;
+    text-align: center;
+    width: 600px;
+    margin: auto;
+    border-bottom: solid 2px white;
+}
+
+.calc_skills {
+    width: 525px;
+    display: block;
+    margin: auto;
+}
+
+.calc_skill {
+    height: 22px;
+    border: solid 1px #888;
+    padding: 10px;
+    color: #888;
+    display: inline-block;
+    width: 150px;
+    margin-top: 5px;
+    border-radius: 2px;
+}
+
+.calc_skill:hover {
+    cursor: pointer;
+    color: white;
+    border-color: white;
+}
+
+.calc_skill:active {
+    background-color: grey;
+    color: white;
+    border-color: white;
+}
+
+
+.calc_skill_icon {
+    width: 22px;
+    height: 22px;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+    vertical-align: middle;
+    margin-right: -5px;
+    display: inline-block;
+}
+
+.calc_skill_name {
+    display: inline-block;
+    vertical-align: middle;
+    line-height: 22px;
+    width: 128px;
+    text-align: center;
+}
+
+#calc_loading {
+    margin-top: 10px;
+    text-align: center;
+}
+
+#calc_skills {
+    display: none;
+}
+
+#prayer_icon {
+    background-image: url('./assets/stats/Prayer-icon.png');
+}
+#magic_icon {
+    background-image: url('./assets/stats/Magic-icon.png');
+}
+#cooking_icon {
+    background-image: url('./assets/stats/Cooking-icon.png');
+}
+#woodcutting_icon {
+    background-image: url('./assets/stats/Woodcutting-icon.png');
+}
+#fletching_icon {
+    background-image: url('./assets/stats/Fletching-icon.png');
+}
+#fishing_icon {
+    background-image: url('./assets/stats/Fishing-icon.png');
+}
+#firemaking_icon {
+    background-image: url('./assets/stats/Firemaking-icon.png');
+}
+#crafting_icon {
+    background-image: url('./assets/stats/Crafting-icon.png');
+}
+#smithing_icon {
+    background-image: url('./assets/stats/Smithing-icon.png');
+}
+#mining_icon {
+    background-image: url('./assets/stats/Mining-icon.png');
+}
+#herblore_icon {
+    background-image: url('./assets/stats/Herblore-icon.png');
+}
+#agility_icon {
+    background-image: url('./assets/stats/Agility-icon.png');
+}
+#thieving_icon {
+    background-image: url('./assets/stats/Thieving-icon.png');
+}
+#farming_icon {
+    background-image: url('./assets/stats/Farming-icon.png');
+}
+#runecrafting_icon {
+    background-image: url('./assets/stats/Runecrafting-icon.png');
+}
+#hunter_icon {
+    background-image: url('./assets/stats/Hunter-icon.png');
+}
+#construction_icon {
+    background-image: url('./assets/stats/Construction-icon.png');
+}
+#summoning_icon {
+    background-image: url('./assets/stats/Summoning-icon.png');
 }
