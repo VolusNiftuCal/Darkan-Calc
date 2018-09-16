@@ -8,6 +8,10 @@
                                   supported by Chrome and Opera */
 }
 
+html {
+    overflow-y: scroll;
+}
+
 
 body {
     background-color: #202020;
@@ -156,4 +160,104 @@ body {
 }
 #summoning_icon {
     background-image: url('./assets/stats/Summoning-icon.png');
+}
+
+.button {
+    background-color: #424242;
+    color: white;
+    border: none;
+    text-align: center;
+    border-radius: 2px;
+    padding: 3px;
+}
+
+.button:hover {
+    cursor: pointer;
+    background-color: #080808;
+}
+
+.button:active {
+    outline: rgb(51, 122, 183);
+    background-color: rgb(51, 122, 183);
+}
+
+#calc {
+    display: none;
+    width: 503px;
+    margin: auto;
+    margin-top: 5px;
+    border: solid 1px #888;
+    padding: 10px;
+    border-radius: 2px;
+}
+
+#calc_return {
+    font-size: 14px;
+}
+
+#calc_return:hover {
+    cursor: pointer;
+    color: white;
+    border-bottom: solid white 1px;
+}
+
+#calc_data {
+    margin-top: 10px;
+}
+
+.calc_user_data {
+    text-align: center;
+    padding: 10px;
+}
+
+#calc_data table:first-child {
+    width: 300px;
+    border: none;
+    padding: 0px;
+    margin: auto;
+    text-align: center;
+}
+
+#calc_data table tr td {
+    min-width: 100px;
+    min-height: 25px;
+}
+
+.table_darkcell {
+    background-color: #181818;
+}
+
+#submit_user {
+    width: 65px;
+}
+
+#submit_user:disabled {
+    background-color: grey;
+    cursor: default; 
+    border: none;
+}
+
+.calc_data_input {
+    text-align: center;
+    width: 95px;
+}
+
+.calc_data_input[type=number]::-webkit-inner-spin-button, .calc_data_input[type=number]::-webkit-outer-spin-button {
+    opacity: 1;
+}
+
+#calc_category {
+    width: 280px;
+    border: solid #181818 1px;
+    padding: 0px;
+    margin: auto;
+    text-align: center;
+}
+
+#calc_category tr td:first-child {
+    width: 100px;
+}
+
+#calc_category tr td:nth-child(2), #calc_category tr td select {
+    width: 180px;
 }
