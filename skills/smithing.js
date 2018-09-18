@@ -1,2 +1,1 @@
-skill_items[13] = [
-];
+skill_info[13] = {};

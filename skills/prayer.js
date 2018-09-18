@@ -12,10 +12,17 @@ prayer_bones = [
     ['Frost dragon bones', 1, 180]
 ];
 
-skill_items[5] = [];
+skill_info[5] = {
+    name: 'Prayer',
+    categories: {
+        title: 'Category',
+        values: ['Burying', 'Ectofuntus', 'Altar']
+    },
+    items: []
+};
 
 for (var i = 0; i < prayer_bones.length; i++) {
-    skill_items[5].push(new SkillItem(prayer_bones[i][0], prayer_bones[i][1], prayer_bones[i][2], 'Burying'));
-    skill_items[5].push(new SkillItem(prayer_bones[i][0] + ' (ecto)', prayer_bones[i][1], prayer_bones[i][2] * 4, 'Ectofuntus'));
-    skill_items[5].push(new SkillItem(prayer_bones[i][0] + ' (altar)', prayer_bones[i][1], prayer_bones[i][2] * 3.5, 'Altar'));
+    skill_info[5].items.push(new SkillItem(prayer_bones[i][0], prayer_bones[i][1], prayer_bones[i][2], 'Burying'));
+    skill_info[5].items.push(new SkillItem(prayer_bones[i][0] + ' (Ecto)', prayer_bones[i][1], prayer_bones[i][2] * 4, 'Ectofuntus'));
+    skill_info[5].items.push(new SkillItem(prayer_bones[i][0] + ' (Altar)', prayer_bones[i][1], prayer_bones[i][2] * 3.5, 'Altar'));
 }

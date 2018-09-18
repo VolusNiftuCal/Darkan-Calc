@@ -259,5 +259,5 @@ body {
 }
 
 #calc_category tr td:nth-child(2), #calc_category tr td select {
-    width: 180px;
+    width: 170px;
 }
