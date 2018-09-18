@@ -23,7 +23,7 @@ function clearChildren(node) {
 
 skill_names = [ 'Attack', 'Defence', 'Strength', 'Hitpoints', 'Ranged', 'Prayer', 'Magic', 'Cooking', 'Woodcutting', 'Fletching', 'Fishing', 'Firemaking', 'Crafting', 'Smithing', 'Mining', 'Herblore', 'Agility', 'Thieving', 'Slayer', 'Farming', 'Runecrafting', 'Hunter', 'Construction', 'Summoning', 'Dungeoneering'];
 
-var skill_items = new Array(25);
+var skill_info = new Array(25);
 
 function SkillItem(name, lvl, xp, category=undefined) {
     this.name = name;
@@ -60,13 +60,14 @@ function SkillCalc(container) {
     this.playerName = undefined;
     this.multiplier = 1;
     this.skillId = -1;
-    this.category = 'All';
 
     this.curLvl = 1;
     this.curXp = 0;
     this.targetLvl = 2;
     this.targetXp = 83;
     this.xpDelta = this.targetXp - this.curXp;
+    this.category = 'All';
+    this.subcategory = 'All';
 
     var sc = this;
     this.fetchPlayer = function(name) {
@@ -117,19 +118,18 @@ function SkillCalc(container) {
         document.getElementById('calc_skills').style.display = 'none';
         document.getElementById('calc').style.display = 'block';
         sc.skillId = skillId;
-        sc.skill = skill_items[skillId];
+        sc.skill = skill_info[skillId];
         if (sc.player) {
             sc.setupPlayerStats(sc.player);
         }
-        var category_title = undefined;
-        var category_data = undefined;
-        switch (skillId) {
-            // Magic
-            case 6:
-                category_title = [' Spellbook', 'Spell' ];
-                break;
+        clearChildren(calc_category);
+        calc_category.style.display = 'none';
+        if (sc.skill.categories) {
+            calc_category.style.display = 'Block';
+            newCategory(sc.skill.categories, sc.updateCategory);
         }
-        if (category_title) {
+        if (sc.skill.subcategories) {
+            newCategory(sc.skill.subcategories, sc.updateSubcategory);
         }
     };
 
@@ -142,6 +142,8 @@ function SkillCalc(container) {
         document.getElementById('calc_skills').style.display = 'block';
         sc.skillId = -1;
         sc.skill = undefined;
+        sc.category = 'All';
+        sc.subcategory = 'All';
     };
 
     this.updateData = function() {
@@ -162,6 +164,37 @@ function SkillCalc(container) {
         target_lvl.value = sc.targetLvl;
         target_xp.value = sc.targetXp;
     };
+    this.updateCategory = function(value) {
+        sc.category = value;
+    };
+    this.updateSubcategory = function(value) {
+        sc.subcategory = value;
+    };
+    function newCategory(category, updateFunction) {
+        var skill_category = newElement('tr', {className: 'calc_cat'});
+        var skill_category_title = newElement('td', {className: 'table_darkcell'});
+
+        skill_category_title.textContent = category.title;
+        skill_category.appendChild(skill_category_title);
+
+        var skill_category_select_cell = newElement('td');
+        skill_category.appendChild(skill_category_select_cell);
+
+        var skill_category_select = newElement('select');
+        skill_category_select_cell.appendChild(skill_category_select);
+
+        for (var i = -1; i < category.values.length; i++) {
+            var cat_value = (i === -1 ? 'All' : category.values[i]);
+            var skill_category_value = newElement('option');
+            skill_category_value.value = cat_value;
+            skill_category_value.textContent = cat_value;
+            skill_category_select.appendChild(skill_category_value);
+        }
+        skill_category_select.onchange = function() {
+            updateFunction(this.value);
+        };
+        calc_category.appendChild(skill_category);
+    }
 };
 
 var skillCalc = undefined;
