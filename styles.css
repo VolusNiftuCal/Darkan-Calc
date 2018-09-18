@@ -239,7 +239,9 @@ body {
 
 .calc_data_input {
     text-align: center;
-    width: 95px;
+    width: 100%;
+    box-sizing: border-box;
+    border: none;
 }
 
 .calc_data_input[type=number]::-webkit-inner-spin-button, .calc_data_input[type=number]::-webkit-outer-spin-button {
@@ -249,6 +251,7 @@ body {
 #calc_category {
     width: 280px;
     border: solid #181818 1px;
+    border-bottom: none;
     padding: 0px;
     margin: auto;
     text-align: center;
@@ -260,4 +263,46 @@ body {
 
 #calc_category tr td:nth-child(2), #calc_category tr td select {
     width: 170px;
+}
+
+#skill_icon {
+    width: 18px;
+    height: 18px;
+    margin: auto;
+    background-image: url('./assets/stats/Overall-icon.png');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+}
+
+#calc_info {
+    width: 400px;
+    text-align: center;
+    margin: auto;
+    border: solid #181818 1px;
+    border-collapse: collapse;
+    padding: 0px;
+    margin-bottom: 40px;
+}
+
+#calc_info tr td {
+    border: solid #181818 1px;
+    padding: 3px;
+}
+
+#calc_info tr:first-child td {
+    background-color: #181818;
+}
+
+#calc_info tr {
+    color: white;
+    font-size: 14px;
+}
+
+.calc_data_available {
+    background-color: #3a9d19;
+}
+
+.calc_data_unavailable {
+    background-color: #c73333;
 }

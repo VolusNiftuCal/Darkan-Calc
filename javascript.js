@@ -89,6 +89,8 @@ function SkillCalc(container) {
                 }
         }).catch(function(err){
             console.log('Failed to fetch data; Error: ' + err);
+            submit_user.removeAttribute('disabled');
+            submit_user.value = 'Get Stats';
             sc.loadError('Error: ' + err);
         });
     };
@@ -109,6 +111,8 @@ function SkillCalc(container) {
         sc.curXp = player.stats.skills[sc.skillId].xp;
         sc.targetLvl = player.stats.skills[sc.skillId].level + 1;
         sc.targetXp = xpAtLevel(player.stats.skills[sc.skillId].level + 1);
+        sc.xpDelta = sc.targetXp - sc.curXp;
+        xp_delta.textContent = formatNumber(sc.xpDelta);
         xp_multiplier.value = sc.multiplier;
         sc.updateData();
     };
@@ -131,6 +135,10 @@ function SkillCalc(container) {
         if (sc.skill.subcategories) {
             newCategory(sc.skill.subcategories, sc.updateSubcategory);
         }
+        if (sc.skill.name) {
+            skill_icon.style.backgroundImage = 'url("./assets/stats/' +sc.skill.name+ '-icon.png")';
+        }
+        sc.updateSkillInfo();
     };
 
     this.display = function(cont) {
@@ -144,6 +152,7 @@ function SkillCalc(container) {
         sc.skill = undefined;
         sc.category = 'All';
         sc.subcategory = 'All';
+        skill_icon.style.backgroundImage = 'url("./assets/stats/Overall-icon.png")';
     };
 
     this.updateData = function() {
@@ -163,6 +172,7 @@ function SkillCalc(container) {
         cur_xp.value = sc.curXp;
         target_lvl.value = sc.targetLvl;
         target_xp.value = sc.targetXp;
+        sc.updateSkillInfo();
     };
     this.updateCategory = function(value) {
         sc.category = value;
@@ -170,6 +180,34 @@ function SkillCalc(container) {
     this.updateSubcategory = function(value) {
         sc.subcategory = value;
     };
+    this.updateSkillInfo = function() {
+        if (sc.skill.items) {
+            var list = sc.skill.items;
+            if (sc.category !== 'All' || sc.subcategory !== 'All') {
+                list = [];
+                for (var i = 0; i < sc.skill.items.length; i++) {
+                    if (sc.skill.items[i].category.indexOf(sc.category) > -1 || sc.category === 'All') {
+                        if (sc.subcategory === 'All' || sc.skill.items[i].category.indexOf(sc.subcategory) > -1) {
+                            list.push(sc.skill.items[i])
+                        }
+                    }
+                }
+            }
+            function lvlComparator(a, b) {
+                if (a.lvl < b.lvl) return -1;
+                if (a.lvl > b.lvl) return 1;
+                return 0;
+            }
+            if (sc.skill.name !== 'Prayer') {
+                list = list.sort(lvlComparator);
+            }
+            clearChildren(calc_info);
+            newSkillData(['Number', 'Name', 'LVL', 'XP']);
+            for (var i = 0; i < list.length; i++) {
+                newSkillData([Math.ceil(sc.xpDelta / (list[i].xp * sc.multiplier)), list[i].name, list[i].lvl, list[i].xp * sc.multiplier]);
+            }
+        }
+    }
     function newCategory(category, updateFunction) {
         var skill_category = newElement('tr', {className: 'calc_cat'});
         var skill_category_title = newElement('td', {className: 'table_darkcell'});
@@ -192,8 +230,25 @@ function SkillCalc(container) {
         }
         skill_category_select.onchange = function() {
             updateFunction(this.value);
+            sc.updateSkillInfo();
         };
         calc_category.appendChild(skill_category);
+    }
+    function newSkillData(data) {
+        var data_row = newElement('tr');
+        if (data[2] !== 'LVL') {
+            if (data[2] <= sc.curLvl) {
+                data_row.className = 'calc_data_available';
+            } else {
+                data_row.className = 'calc_data_unavailable';
+            }
+        }
+        for (var i = 0; i < data.length; i++) {
+            var data_cell = newElement('td');
+            data_cell.textContent = data[i];
+            data_row.appendChild(data_cell);
+        }
+        calc_info.appendChild(data_row);
     }
 };
 
@@ -234,6 +289,10 @@ window.onload = function() {
         }
         skillCalc.targetXp = parseInt(this.value);
         skillCalc.targetLvl = levelAtXP(parseInt(this.value));
+        skillCalc.updateData();
+    };
+    xp_multiplier.onchange = function() {
+        skillCalc.multiplier = parseInt(this.value);
         skillCalc.updateData();
     };
 };

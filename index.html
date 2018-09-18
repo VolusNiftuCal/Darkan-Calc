@@ -119,26 +119,26 @@
                             </td>
                         </tr>
                         <tr>
-                            <td class="table_darkcell">&nbsp</td>
+                            <td class="table_darkcell"><div id="skill_icon">&nbsp</div></td>
                             <td class="table_darkcell">Level</td>
                             <td class="table_darkcell">XP</td>
                         </tr>
                         <tr>
                             <td class="table_darkcell">Current</td>
-                            <td colspan="2">
-                                <form>
-                                    <input class="calc_data_input" id="cur_lvl" type="number" value="1" min="1" max="120">
-                                    <input class="calc_data_input" id="cur_xp" type="number" value="0" min="0" max="200000000">
-                                </form>
+                            <td>
+                                <input class="calc_data_input" id="cur_lvl" type="number" value="1" min="1" max="120">
+                            </td>
+                            <td>
+                                <input class="calc_data_input" id="cur_xp" type="number" value="0" min="0" max="200000000">
                             </td>
                         </tr>
                         <tr>
                             <td class="table_darkcell">Target</td>
-                            <td colspan="2">
-                                <form>
-                                    <input class="calc_data_input" id="target_lvl" type="number" value="2" min="2" max="120">
-                                    <input class="calc_data_input" id="target_xp" type="number" value="83" min="83" max="200000000">
-                                </form>
+                            <td>
+                                <input class="calc_data_input" id="target_lvl" type="number" value="2" min="2" max="120">
+                            </td>
+                            <td>
+                                <input class="calc_data_input" id="target_xp" type="number" value="83" min="83" max="200000000">
                             </td>
                         </tr>
                         <tr>
@@ -164,6 +164,7 @@
                             </td>
                             <td>
                                 <select>
+                                    <option value="All">All</option>
                                     <option value="c1">cat1</option>
                                     <option value="c2">cat2</option>
                                     <option value="c3">cat3</option>
@@ -172,10 +173,11 @@
                         </tr>
                         <tr class="calc_cat">
                             <td class="table_darkcell">
-                                Category2
+                                Subcategory
                             </td>
                             <td>
                                 <select>
+                                    <option value="All">All</option>
                                     <option value="c4">cat4</option>
                                     <option value="c5">cat5</option>
                                     <option value="c6">cat6</option>
@@ -184,8 +186,21 @@
                         </tr>
                     </table>
                 </div>
-                <div id="calc_info">
-                    info tables
+                <div>
+                    <table id="calc_info">
+                        <tr>
+                            <td>Number</td>
+                            <td>Name</td>
+                            <td>LVL</td>
+                            <td>XP</td>
+                        </tr>
+                        <tr>
+                            <td>1</td>
+                            <td>Data</td>
+                            <td>1</td>
+                            <td>1</td>
+                        </tr>
+                    </table>
                 </div>
             </div>
             <noscript>
