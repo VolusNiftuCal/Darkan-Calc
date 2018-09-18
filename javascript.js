@@ -193,14 +193,14 @@ function SkillCalc(container) {
                     }
                 }
             }
-            function lvlComparator(a, b) {
+            function skillDataComparator(a, b) {
                 if (a.lvl < b.lvl) return -1;
                 if (a.lvl > b.lvl) return 1;
+                if (a.xp < b.xp) return -1;
+                if (a.xp > b.xp) return 1;
                 return 0;
             }
-            if (sc.skill.name !== 'Prayer') {
-                list = list.sort(lvlComparator);
-            }
+            list = list.sort(skillDataComparator);
             clearChildren(calc_info);
             newSkillData(['Number', 'Name', 'LVL', 'XP']);
             for (var i = 0; i < list.length; i++) {
