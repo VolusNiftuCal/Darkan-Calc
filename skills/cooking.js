@@ -1,5 +1,5 @@
 skill_info[7] = {
-    name:'Cooking',
+    name: 'Cooking',
     categories: {
         title: 'Category',
         values: ['Cakes', 'Fishes', 'Meats', 'Pizzas', 'Pies', 'Potatoes', 'Stews', 'Other']
