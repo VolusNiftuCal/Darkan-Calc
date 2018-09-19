@@ -1,1 +1,50 @@
-skill_info[20] = {};
+skill_info[20] = {
+    name: 'Runecrafting',
+    categories: {
+        title: 'Category',
+        values: ['Normal Runes', 'Combination Runes', 'Tiaras']
+    },
+    items: [
+        // Normal Runes
+        new SkillItem('Air Rune', 1, 5, ['Normal Runes']),
+        new SkillItem('Mind Rune', 2, 5.5, ['Normal Runes']),
+        new SkillItem('Water Rune', 5, 6, ['Normal Runes']),
+        new SkillItem('Earth Rune', 9, 6.5, ['Normal Runes']),
+        new SkillItem('Fire Rune', 14, 7, ['Normal Runes']),
+        new SkillItem('Body Rune', 20, 7.5, ['Normal Runes']),
+        new SkillItem('Cosmic Rune', 27, 8, ['Normal Runes']),
+        new SkillItem('Chaos Rune', 35, 8.5, ['Normal Runes']),
+        new SkillItem('Astral Rune', 40, 8.7, ['Normal Runes']),
+        new SkillItem('Nature Rune', 44, 9, ['Normal Runes']),
+        new SkillItem('Law Rune', 54, 9.5, ['Normal Runes']),
+        new SkillItem('Death Rune', 65, 10, ['Normal Runes']),
+        new SkillItem('Armadyl Rune', 72, 10, ['Normal Runes']),
+        new SkillItem('Blood Rune', 77, 10.5, ['Normal Runes']),
+        // Combination Runes
+        new SkillItem('Mist Rune (Runes > Altar)', 6, 8, ['Combination Runes']),
+        new SkillItem('Mist Rune (Altar > Runes)', 6, 8.5, ['Combination Runes']),
+        new SkillItem('Dust Runes (Runes > Altar)', 10, 8.3, ['Combination Runes']),
+        new SkillItem('Dust Runes (Altar > Runes)', 10, 9, ['Combination Runes']),
+        new SkillItem('Mud Rune (Runes > Altar)', 13, 9.3, ['Combination Runes']),
+        new SkillItem('Mud Rune (Altar > Runes)', 13, 9.5, ['Combination Runes']),
+        new SkillItem('Smoke Rune (Runes > Altar)', 15, 8.5, ['Combination Runes']),
+        new SkillItem('Smoke Rune (Altar > Runes)', 15, 9.5, ['Combination Runes']),
+        new SkillItem('Steam Rune (Runes > Altar)', 19, 9.5, ['Combination Runes']),
+        new SkillItem('Steam Rune (Altar > Runes)', 19, 10, ['Combination Runes']),
+        new SkillItem('Lava Rune (Runes > Altar)', 23, 10, ['Combination Runes']),
+        new SkillItem('Lava Rune (Altar > Runes)', 23, 10.5, ['Combination Runes']),
+        // Tiaras
+        new SkillItem('Air Tiara', 1, 25, ['Tiaras']),
+        new SkillItem('Mind Tiara', 1, 27.5, ['Tiaras']),
+        new SkillItem('Water Tiara', 1, 30, ['Tiaras']),
+        new SkillItem('Earth Tiara', 1, 32.5, ['Tiaras']),
+        new SkillItem('Fire Tiara', 1, 35, ['Tiaras']),
+        new SkillItem('Body Tiara', 1, 37.5, ['Tiaras']),
+        new SkillItem('Cosmic Tiara', 1, 40, ['Tiaras']),
+        new SkillItem('Chaos Tiara', 1, 42.5, ['Tiaras']),
+        new SkillItem('Nature Tiara', 1, 45, ['Tiaras']),
+        new SkillItem('Law Tiara', 1, 47.5, ['Tiaras']),
+        new SkillItem('Death Tiara', 1, 50, ['Tiaras']),
+        new SkillItem('Blood Tiara', 1, 52.5, ['Tiaras']),
+    ]
+};
