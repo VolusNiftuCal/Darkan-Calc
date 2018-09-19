@@ -1,9 +1,5 @@
 skill_info[10] = {
     name: 'Fishing',
-    categories: {
-        title: 'Category',
-        values: ['Gloves', 'Barbarian']
-    },
     items: [
         new SkillItem('Shrimp', 1, 10),
         new SkillItem('Crayfish', 1, 10),
@@ -26,17 +22,12 @@ skill_info[10] = {
         new SkillItem('Leaping Trout', 48, 50),
         new SkillItem('Swordfish', 50, 100),
         new SkillItem('Lava Eel', 53, 60),
-        new SkillItem('Tuna (Barbarian)', 55, 80, ['Barbarian']),
         new SkillItem('Leaping Salmon', 58, 70),
         new SkillItem('Monkfish', 62, 120),
         new SkillItem('Karambwan', 65, 105),
-        new SkillItem('Swordfish (Gloves)', 65, 200, ['Gloves']),
         new SkillItem('Leaping Sturgeon', 70, 80),
-        new SkillItem('Swordfish (Barbarian)', 70, 100, ['Barbarian']),
         new SkillItem('Shark', 76, 110),
         new SkillItem('Cavefish', 85, 300),
-        new SkillItem('Shark (Gloves)', 90, 210, ['Gloves']),
         new SkillItem('Rocktail', 90, 380),
-        new SkillItem('Shark (Barbarian)', 96, 130, ['Barbarian']),
     ]
 };
