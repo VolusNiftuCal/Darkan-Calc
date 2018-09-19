@@ -1,9 +1,14 @@
 /* Format the number to make it easier to read
     ex: 1000 >= 1.000
         1000000 >= 1.000.000
-*/
 function formatNumber(n) {
-    return n.toString().replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1.");
+    return n.toString().replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1,");
+}*/
+
+function formatNumber(n) {
+    return parseFloat(n.toFixed(1)).toString().replace(/(^|[^\w.])(\d{4,})/g, function($0, $1, $2) {
+        return $1 + $2.replace(/\d(?=(?:\d\d\d)+(?!\d))/g, "$&,");
+    });
 }
 
 function newElement(element, args={}) {
@@ -25,7 +30,7 @@ skill_names = [ 'Attack', 'Defence', 'Strength', 'Hitpoints', 'Ranged', 'Prayer'
 
 var skill_info = new Array(25);
 
-function SkillItem(name, lvl, xp, category=undefined) {
+function SkillItem(name, lvl=1, xp=1, category=[]) {
     this.name = name;
     this.lvl = lvl;
     this.xp = xp;
@@ -47,10 +52,6 @@ function levelAtXP(xp) {
         lvl++;
     }
     return lvl;
-};
-
-function formatNumber(n) {
-    return n.toString().replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1.");
 };
 
 function SkillCalc(container) {
@@ -181,8 +182,14 @@ function SkillCalc(container) {
         sc.subcategory = value;
     };
     this.updateSkillInfo = function() {
+        clearChildren(calc_info);
+        newSkillData(['Number', 'Name', 'LVL', 'XP']);
+        if (!sc.skill.items) {
+            newSkillData(['Nothing Found']);
+        }
+        var list = [];
         if (sc.skill.items) {
-            var list = sc.skill.items;
+            list = sc.skill.items;
             if (sc.category !== 'All' || sc.subcategory !== 'All') {
                 list = [];
                 for (var i = 0; i < sc.skill.items.length; i++) {
@@ -200,11 +207,14 @@ function SkillCalc(container) {
                 if (a.xp > b.xp) return 1;
                 return 0;
             }
+            if (list.length === 0) {
+                newSkillData(['Nothing Found']);
+            }
             list = list.sort(skillDataComparator);
-            clearChildren(calc_info);
-            newSkillData(['Number', 'Name', 'LVL', 'XP']);
             for (var i = 0; i < list.length; i++) {
-                newSkillData([Math.ceil(sc.xpDelta / (list[i].xp * sc.multiplier)), list[i].name, list[i].lvl, list[i].xp * sc.multiplier]);
+                var number = formatNumber(Math.ceil(sc.xpDelta / (list[i].xp * sc.multiplier)));
+                var experience = formatNumber(list[i].xp * sc.multiplier);
+                newSkillData([number, list[i].name, list[i].lvl, experience]);
             }
         }
     }
@@ -236,17 +246,23 @@ function SkillCalc(container) {
     }
     function newSkillData(data) {
         var data_row = newElement('tr');
-        if (data[2] !== 'LVL') {
+        for (var i = 0; i < data.length; i++) {
+            var data_cell = newElement('td');
+            data_cell.innerHTML = data[i];
+            /*if (d.indexOf('(') > -1 && d.indexOf('+') > -1) {
+                data_cell.innerHTML = d.substring(0, d.indexOf('(')) + '<br/>' + d.substring(d.indexOf('('));
+            }*/
+            data_row.appendChild(data_cell);
+        }
+        if (data[0] === 'Nothing Found') {
+            data_cell.colSpan = '4';
+        }
+        if (data[0] !== 'Nothing Found' || data[2] !== 'LVL') {
             if (data[2] <= sc.curLvl) {
                 data_row.className = 'calc_data_available';
             } else {
                 data_row.className = 'calc_data_unavailable';
             }
-        }
-        for (var i = 0; i < data.length; i++) {
-            var data_cell = newElement('td');
-            data_cell.textContent = data[i];
-            data_row.appendChild(data_cell);
         }
         calc_info.appendChild(data_row);
     }

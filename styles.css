@@ -255,6 +255,7 @@ body {
     padding: 0px;
     margin: auto;
     text-align: center;
+    border-radius: 2px 2px 0px 0px;
 }
 
 #calc_category tr td:first-child {
@@ -283,6 +284,7 @@ body {
     border-collapse: collapse;
     padding: 0px;
     margin-bottom: 40px;
+    border-radius: 2px;
 }
 
 #calc_info tr td {
@@ -292,6 +294,9 @@ body {
 
 #calc_info tr:first-child td {
     background-color: #181818;
+}
+
+#calc_info tr:first-child {
 }
 
 #calc_info tr {
