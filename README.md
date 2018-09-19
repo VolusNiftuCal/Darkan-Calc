@@ -1,5 +1,5 @@
-# Darkan-Calc
-Skill calculator for Darkan
+# Darkan Calc
+Skill calculator for [Darkan](http://darkan.org/)
 
 [Preview](https://imgur.com/a/eiduKxp)
 ### Skill Selection
