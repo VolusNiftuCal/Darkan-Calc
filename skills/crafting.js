@@ -179,7 +179,7 @@ skill_info[12] = {
         new SkillItem('Light Orb + Wire + Superglass', 87, 184, 'Glassblowing', 'Total'),
         new SkillItem('Light Orb + Wire + Molten Glass', 87, 194, ['Glassblowing', 'Total']),
         new SkillItem('Royal Dragonhide Vambraces', 87, 94, ['Leather']),
-        new SkillItem('Potion Flask', 89, 100, ['Total']),
+        new SkillItem('Potion Flask', 89, 100, ['Glassblowing', 'Total']),
         new SkillItem('Royal Dragonhide Chaps', 89, 188, ['Leather']),
         new SkillItem('Onyx Amulet', 90, 165, ['Jewellery', 'Partial']),
         new SkillItem('Onyx Amulet + Cut Onyx', 90, 332.5, ['Jewellery', 'Total']),
