@@ -42,8 +42,7 @@ skill_info[21] = {
         new SkillItem('Diseased Jadinko', 78, 580.5, ['Herblore Habitat']),
         new SkillItem('Camouflaged Jadinko', 79, 600, ['Herblore Habitat']),
         new SkillItem('Draconic Jadinko', 80, 525, ['Herblore Habitat']),
-        new SkillItem('Saradomin Jadinko', 81, 600, ['Herblore Habitat']),
-        new SkillItem('Zamorak Jadinko', 81, 600, ['Herblore Habitat']),
+        new SkillItem('God Jadinko', 81, 600, ['Herblore Habitat']),
         // Net Trap
         new SkillItem('Swamp Lizard', 29, 152, ['Net Trap']),
         new SkillItem('Orange Salamander', 47, 224, ['Net Trap']),
