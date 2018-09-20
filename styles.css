@@ -244,7 +244,7 @@ body {
     border: none;
 }
 
-.calc_data_input[type=number]::-webkit-inner-spin-button, .calc_data_input[type=number]::-webkit-outer-spin-button {
+input[type=number]::-webkit-inner-spin-button, input[type=number]::-webkit-outer-spin-button {
     opacity: 1;
 }
 
@@ -310,4 +310,9 @@ body {
 
 .calc_data_unavailable {
     background-color: #c73333;
+}
+
+#xp_modifier {
+    width: 40px;
+    text-align: center;
 }

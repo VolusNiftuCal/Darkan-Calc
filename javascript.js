@@ -60,6 +60,7 @@ function SkillCalc(container) {
     this.player = undefined;
     this.playerName = undefined;
     this.multiplier = 1;
+    this.modifier = 1;
     this.skillId = -1;
 
     this.curLvl = 1;
@@ -153,6 +154,8 @@ function SkillCalc(container) {
         sc.skill = undefined;
         sc.category = 'All';
         sc.subcategory = 'All';
+        sc.modifier = 1;
+        xp_modifier.value = 0;
         skill_icon.style.backgroundImage = 'url("./assets/stats/Overall-icon.png")';
     };
 
@@ -212,9 +215,10 @@ function SkillCalc(container) {
             }
             list = list.sort(skillDataComparator);
             for (var i = 0; i < list.length; i++) {
-                var number = formatNumber(Math.ceil(sc.xpDelta / (list[i].xp * sc.multiplier)));
-                var experience = formatNumber(list[i].xp * sc.multiplier);
-                newSkillData([number, list[i].name, list[i].lvl, experience]);
+                var experience = (list[i].xp * sc.multiplier) * sc.modifier;
+                var number = formatNumber(Math.ceil(sc.xpDelta / experience));
+                //var experience = formatNumber(list[i].xp * sc.multiplier);
+                newSkillData([number, list[i].name, list[i].lvl, formatNumber(experience)]);
             }
         }
     }
@@ -249,9 +253,6 @@ function SkillCalc(container) {
         for (var i = 0; i < data.length; i++) {
             var data_cell = newElement('td');
             data_cell.innerHTML = data[i];
-            /*if (d.indexOf('(') > -1 && d.indexOf('+') > -1) {
-                data_cell.innerHTML = d.substring(0, d.indexOf('(')) + '<br/>' + d.substring(d.indexOf('('));
-            }*/
             data_row.appendChild(data_cell);
         }
         if (data[0] === 'Nothing Found') {
@@ -309,7 +310,14 @@ window.onload = function() {
     };
     xp_multiplier.onchange = function() {
         skillCalc.multiplier = parseInt(this.value);
-        skillCalc.updateData();
+        skillCalc.updateSkillInfo();
+    };
+    xp_modifier.onchange = function() {
+        if (parseInt(this.value) > 999) {
+            this.value = 999;
+        }
+        skillCalc.modifier = 1 + (parseInt(this.value) / 100);
+        skillCalc.updateSkillInfo();
     };
 };
 
