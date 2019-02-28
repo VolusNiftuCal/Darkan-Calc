@@ -74,7 +74,7 @@ function SkillCalc(container) {
     var sc = this;
     this.fetchPlayer = function(name) {
         console.log('Trying to fetch player data...')
-        fetch('http://darkan.org:5556/api/player/' + name, { mode:'cors'})
+        fetch('https://darkan.org/api/player/' + name, { mode:'cors'})
             .then(function(response) {
                 if (response.status !== 200) {
                     console.log('Failed to fetch data; Status: ' + response.status);
